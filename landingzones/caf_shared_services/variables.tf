@@ -51,6 +51,9 @@ variable diagnostics_definition {
 variable resource_groups {
   default = {}
 }
+variable resource_group_datas {
+  default = {}
+}
 variable automations {
   default = {}
 }
@@ -67,5 +70,14 @@ variable diagnostic_storage_accounts {
   default = {}
 }
 variable virtual_machines {
+  default = {}
+}
+variable azure_container_registries {
+  default = {}
+}
+variable azure_container_registry_datas {
+  default = {}
+}
+variable role_mapping {
   default = {}
 }

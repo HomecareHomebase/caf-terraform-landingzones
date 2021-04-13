@@ -1,6 +1,5 @@
 module "caf" {
-  source  = "aztfmod/caf/azurerm"
-  version = "~>5.2.0"
+  source = "git::https://github.com/HomecareHomebase/terraform-azurerm-caf?ref=feature/brown_field"
 
   azuread_api_permissions      = var.azuread_api_permissions
   azuread_apps                 = var.azuread_apps
@@ -20,6 +19,7 @@ module "caf" {
   logged_user_objectId         = var.logged_user_objectId
   managed_identities           = var.managed_identities
   resource_groups              = var.resource_groups
+  resource_group_datas         = var.resource_group_datas
   role_mapping                 = var.role_mapping
   storage_accounts             = var.storage_accounts
   tags                         = local.tags
@@ -28,12 +28,13 @@ module "caf" {
   user_type                    = var.user_type
 
   compute = {
-    aks_clusters               = var.aks_clusters
-    availability_sets          = var.availability_sets
-    azure_container_registries = var.azure_container_registries
-    bastion_hosts              = var.bastion_hosts
-    proximity_placement_groups = var.proximity_placement_groups
-    virtual_machines           = var.virtual_machines
+    aks_clusters                   = var.aks_clusters
+    availability_sets              = var.availability_sets
+    azure_container_registries     = var.azure_container_registries
+    azure_container_registry_datas = var.azure_container_registry_datas
+    bastion_hosts                  = var.bastion_hosts
+    proximity_placement_groups     = var.proximity_placement_groups
+    virtual_machines               = var.virtual_machines
   }
 
   database = {

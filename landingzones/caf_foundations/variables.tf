@@ -60,6 +60,9 @@ variable keyvaults {
 variable resource_groups {
   default = {}
 }
+variable resource_group_datas {
+  default = {}
+}
 variable log_analytics {
   default = {}
 }

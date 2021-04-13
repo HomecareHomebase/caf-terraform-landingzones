@@ -26,11 +26,11 @@ resource "azuredevops_serviceendpoint_azurerm" "azure" {
 # Grant acccess to service endpoint to all pipelines in the project
 #
 
-resource "azuredevops_resource_authorization" "endpoint" {
-  for_each = azuredevops_serviceendpoint_azurerm.azure
+# resource "azuredevops_resource_authorization" "endpoint" {
+#   for_each = azuredevops_serviceendpoint_azurerm.azure
 
-  project_id  = data.azuredevops_project.project.id
-  resource_id = each.value.id
-  type        = "endpoint"
-  authorized  = true
-}
+#   project_id  = data.azuredevops_project.project.id
+#   resource_id = each.value.id
+#   type        = "endpoint"
+#   authorized  = true
+# }

@@ -1,7 +1,6 @@
 module "foundations" {
   # source = "/tf/caf/aztfmod"
-  source  = "aztfmod/caf/azurerm"
-  version = "~>5.2.0"
+  source  = "git::https://github.com/HomecareHomebase/terraform-azurerm-caf?ref=feature/brown_field"
 
   current_landingzone_key     = var.landingzone.key
   tenant_id                   = var.tenant_id

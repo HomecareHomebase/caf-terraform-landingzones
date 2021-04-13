@@ -1,6 +1,5 @@
 module "launchpad" {
-  source  = "aztfmod/caf/azurerm"
-  version = "~>5.2.0"
+  source  = "git::https://github.com/HomecareHomebase/terraform-azurerm-caf?ref=feature/brown_field"
 
   current_landingzone_key = var.landingzone.key
   tenant_id               = var.tenant_id
@@ -20,6 +19,7 @@ module "launchpad" {
   }
   event_hub_namespaces                  = var.event_hub_namespaces
   resource_groups                       = var.resource_groups
+  resource_group_datas                  = var.resource_group_datas
   keyvaults                             = var.keyvaults
   keyvault_access_policies              = var.keyvault_access_policies
   keyvault_access_policies_azuread_apps = var.keyvault_access_policies_azuread_apps
@@ -30,6 +30,7 @@ module "launchpad" {
   }
   networking = {
     vnets                             = var.vnets
+    vnet_datas                        = var.vnet_datas
     network_security_group_definition = var.network_security_group_definition
     public_ip_addresses               = var.public_ip_addresses
     azurerm_routes                    = var.azurerm_routes

@@ -4,8 +4,7 @@
 
 
 module "vm_extension_monitoring_agent" {
-  source  = "aztfmod/caf/azurerm//modules/compute/virtual_machine_extensions"
-  version = "~>5.2.0"
+  source  = "git::https://github.com/HomecareHomebase/terraform-azurerm-caf//modules/compute/virtual_machine_extensions?ref=feature/brown_field"
 
   for_each = {
     for key, value in try(var.virtual_machines, {}) : key => value
@@ -22,8 +21,7 @@ module "vm_extension_monitoring_agent" {
 }
 
 module "vm_extension_diagnostics" {
-  source  = "aztfmod/caf/azurerm//modules/compute/virtual_machine_extensions"
-  version = "~>5.2.0"
+  source  = "git::https://github.com/HomecareHomebase/terraform-azurerm-caf//modules/compute/virtual_machine_extensions?ref=feature/brown_field"
 
   for_each = {
     for key, value in try(var.virtual_machines, {}) : key => value

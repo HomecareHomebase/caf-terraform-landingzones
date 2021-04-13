@@ -49,6 +49,11 @@ output redis_caches {
 output managed_identities {
   value     = local.combined.managed_identities
   sensitive = true
+
+  depends_on = [
+    data.terraform_remote_state.remote,
+    module.caf
+  ]
 }
 
 output keyvaults {
@@ -109,6 +114,3 @@ output synapse_workspaces {
   value     = tomap({ (var.landingzone.key) = module.caf.synapse_workspaces })
   sensitive = true
 }
-
-
-

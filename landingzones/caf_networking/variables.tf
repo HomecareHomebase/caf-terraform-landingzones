@@ -52,7 +52,13 @@ variable diagnostics_definition {
 variable resource_groups {
   default = {}
 }
+variable resource_group_datas {
+  default = {}
+}
 variable vnets {
+  default = {}
+}
+variable vnet_datas {
   default = {}
 }
 variable virtual_wans {

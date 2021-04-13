@@ -33,6 +33,11 @@ variable tags {
 variable resource_groups {
   default = {}
 }
+
+variable resource_group_datas {
+  default = {}
+}
+
 variable azurerm_redis_caches {
   default = {}
 }
@@ -246,6 +251,9 @@ variable local_network_gateways {
   default = {}
 }
 variable azure_container_registries {
+  default = {}
+}
+variable azure_container_registry_datas {
   default = {}
 }
 variable azuread_api_permissions {

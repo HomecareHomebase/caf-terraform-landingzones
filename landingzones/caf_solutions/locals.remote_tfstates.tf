@@ -156,3 +156,11 @@ locals {
     vnets                            = merge(local.remote.vnets, tomap({ (var.landingzone.key) = module.caf.vnets }))
   }
 }
+
+output debug_local_remote_managed_identities {
+  value = local.remote.managed_identities
+}
+
+output debug_local_combined_managed_identities {
+  value = local.combined.managed_identities
+}

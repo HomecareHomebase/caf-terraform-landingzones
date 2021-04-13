@@ -61,5 +61,15 @@ locals {
     recovery_vaults = {
       for key, value in try(var.landingzone.tfstates, {}) : key => merge(try(data.terraform_remote_state.remote[key].outputs.recovery_vaults[key], {}))
     }
+    custom_role_definitions = {
+      for key, value in try(var.landingzone.tfstates, {}) : key => merge(try(data.terraform_remote_state.remote[key].outputs.custom_role_definitions[key], {}))
+    }
+    azure_container_registries = {
+      for key, value in try(var.landingzone.tfstates, {}) : key => merge(try(data.terraform_remote_state.remote[key].outputs.container_registries[key], {}))
+    }
+  }
+
+  combined = {
+    azure_container_registries = merge(local.remote.azure_container_registries, tomap({ (var.landingzone.key) = module.landingzones_shared_services.azure_container_registries }))
   }
 }

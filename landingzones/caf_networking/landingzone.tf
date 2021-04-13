@@ -1,6 +1,5 @@
 module "networking" {
-  source  = "aztfmod/caf/azurerm"
-  version = "~>5.2.0"
+  source  = "git::https://github.com/HomecareHomebase/terraform-azurerm-caf?ref=feature/brown_field"
 
   current_landingzone_key  = var.landingzone.key
   tags                     = local.tags
@@ -11,6 +10,7 @@ module "networking" {
   logged_user_objectId     = var.logged_user_objectId
   logged_aad_app_objectId  = var.logged_aad_app_objectId
   resource_groups          = var.resource_groups
+  resource_group_datas     = var.resource_group_datas
   keyvaults                = var.keyvaults
   keyvault_access_policies = var.keyvault_access_policies
   networking = {
@@ -37,6 +37,7 @@ module "networking" {
     virtual_wans                                            = var.virtual_wans
     vnet_peerings                                           = var.vnet_peerings
     vnets                                                   = var.vnets
+    vnet_datas                                              = var.vnet_datas
   }
   compute = {
     azure_container_registries = var.azure_container_registries

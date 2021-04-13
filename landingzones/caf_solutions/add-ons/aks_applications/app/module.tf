@@ -16,12 +16,15 @@ resource "helm_release" "charts" {
   name       = each.value.name
   repository = each.value.repository
   chart      = each.value.chart
+  version    = each.value.version
 
   namespace        = each.value.namespace
   wait             = try(each.value.wait, true)
   timeout          = try(each.value.timeout, 900)
   skip_crds        = try(each.value.skip_crds, false)
   create_namespace = try(each.value.create_namespace, false)
+
+  values = try(each.value.values_file, null) == null ? null : [file(each.value.values_file)]
 
   dynamic "set" {
     for_each = try(each.value.sets, {})
