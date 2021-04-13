@@ -5,6 +5,7 @@ locals {
       aks_clusters               = var.aks_clusters
       availability_sets          = var.availability_sets
       azure_container_registries = var.azure_container_registries
+      azure_container_registry_datas = var.azure_container_registry_datas
       bastion_hosts              = var.bastion_hosts
       container_groups           = var.container_groups
       proximity_placement_groups = var.proximity_placement_groups

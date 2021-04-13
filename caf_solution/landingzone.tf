@@ -27,6 +27,7 @@ module "solution" {
   networking                            = local.networking
   remote_objects                        = local.remote
   resource_groups                       = var.resource_groups
+  resource_group_datas                  = var.resource_group_datas
   role_mapping                          = var.role_mapping
   security                              = local.security
   shared_services                       = local.shared_services
