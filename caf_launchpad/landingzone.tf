@@ -1,6 +1,5 @@
 module "launchpad" {
-  source  = "aztfmod/caf/azurerm"
-  version = "~>5.3.0"
+  source  = "git::https://github.com/HomecareHomebase/terraform-azurerm-caf?ref=feature/brown_field"
 
   azuread_api_permissions               = var.azuread_api_permissions
   azuread_apps                          = var.azuread_apps
