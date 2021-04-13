@@ -72,7 +72,7 @@ locals {
     prefix_with_hyphen = var.prefix == "" ? null : format("%s", try(random_string.prefix.0.result, var.prefix))
     
     suffix             = local.suffix
-    suffixes           = local.suffix == "" ? null : [try(random_string.suffix.0.result, local.suffix)]
+    suffixes           = local.suffix == "" ? null : try([random_string.suffix.0.result, local.suffix], [local.suffix])
     suffix_with_hyphen = local.suffix == "" ? null : format("%s", try(random_string.suffix.0.result, local.suffix))
     
     random_length      = var.random_length
