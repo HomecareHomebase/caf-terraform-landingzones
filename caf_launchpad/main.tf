@@ -45,12 +45,22 @@ resource "random_string" "prefix" {
   number  = false
 }
 
+resource "random_string" "suffix" {
+  count   = var.suffix == null ? 1 : 0
+  length  = 4
+  special = false
+  upper   = false
+  number  = false
+}
+
 locals {
   landingzone_tag = {
     "landingzone" = var.landingzone.key
   }
 
   tags = merge(local.global_settings.tags, local.landingzone_tag, { "level" = var.landingzone.level }, { "environment" = local.global_settings.environment }, { "rover_version" = var.rover_version }, var.tags)
+
+  suffix = join("-", compact([var.suffix, local.environment_code]))
 
   global_settings = {
     default_region     = var.default_region
@@ -60,6 +70,11 @@ locals {
     prefix             = var.prefix
     prefixes           = var.prefix == "" ? null : [try(random_string.prefix.0.result, var.prefix)]
     prefix_with_hyphen = var.prefix == "" ? null : format("%s", try(random_string.prefix.0.result, var.prefix))
+    
+    suffix             = local.suffix
+    suffixes           = local.suffix == "" ? null : [try(random_string.suffix.0.result, local.suffix)]
+    suffix_with_hyphen = local.suffix == "" ? null : format("%s", try(random_string.suffix.0.result, local.suffix))
+    
     random_length      = var.random_length
     regions            = var.regions
     tags               = var.tags
@@ -83,6 +98,26 @@ locals {
     }
   }
 
+  environment_codes = {
+    Local             = "locl",
+    Development       = "dev",
+    QA-Hotfix         = "qahf",
+    Automation-Hotfix = "auhf",
+    QA-Odd            = "qaod",
+    Automation-Odd    = "auod",
+    QA-Even           = "qaev",
+    Automation-Even   = "auev",
+    Staging           = "stg",
+    Training          = "trn",
+    Pilot             = "plt",
+    Pilot-Hotfix      = "plth",
+    Pilot-Staging     = "plts",
+    Production        = "prd",
+    Non-Production    = "nprd",
+    Pipeline          = "ppl"
+  }
+
+  environment_code = lookup(local.environment_codes, var.environment)
 }
 
 data "azurerm_client_config" "current" {}

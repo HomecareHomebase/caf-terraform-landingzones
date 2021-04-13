@@ -70,6 +70,10 @@ variable "tf_name" {
 
 variable "resource_groups" {}
 
+variable resource_group_datas {
+  default = {}
+}
+
 variable "storage_accounts" {}
 variable "keyvaults" {}
 variable "keyvault_access_policies" {
@@ -149,9 +153,31 @@ variable "azuread_api_permissions" {
   default = {}
 }
 
-variable "environment" {
+variable environment {
   type        = string
   description = "This variable is set by the rover during the deployment based on the -env or -environment flags. Default to sandpit"
+
+  validation {
+    condition = contains([
+        "Local",
+        "Development",
+        "QA-Hotfix",
+        "Automation-Hotfix",
+        "QA-Odd",
+        "Automation-Odd",
+        "QA-Even",
+        "Automation-Even",
+        "Staging",
+        "Training",
+        "Pilot",
+        "Pilot-Hotfix",
+        "Pilot-Staging",
+        "Production",
+        "Non-Production",
+        "Pipeline"],
+      var.environment)
+    error_message = "Argument \"environment_name\" isn't a valid value. Valid values are \"Local\", \"Development\", \"QA-Hotfix\", \"Automation-Hotfix\", \"QA-Odd\", \"Automation-Odd\", \"QA-Even\", \"Automation-Even\", \"Staging\", \"Training\", \"Pilot\", \"Pilot-Hotfix\", \"Pilot-Staging\", \"Production\", \"Non-Production\", or \"Pipeline\"."
+  }
 }
 
 variable "diagnostics" {
@@ -194,6 +220,10 @@ variable "vnets" {
   default = {}
 }
 
+variable vnet_datas {
+  default = {}
+}
+
 variable "network_security_group_definition" {
   default = {}
 }
@@ -208,4 +238,8 @@ variable "azurerm_routes" {
 
 variable "route_tables" {
   default = {}
+}
+
+variable suffix {
+  default = null
 }

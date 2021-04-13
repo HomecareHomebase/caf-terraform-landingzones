@@ -19,6 +19,7 @@ module "launchpad" {
   logged_user_objectId                  = var.logged_user_objectId
   managed_identities                    = var.managed_identities
   resource_groups                       = var.resource_groups
+  resource_group_datas                  = var.resource_group_datas
   role_mapping                          = var.role_mapping
   storage_accounts                      = var.storage_accounts
   subscriptions                         = var.subscriptions
@@ -41,6 +42,7 @@ module "launchpad" {
 
   networking = {
     vnets                             = try(var.networking.vnets, var.vnets)
+    vnet_datas                        = try(var.networking.vnet_datas, var.vnet_datas)
     network_security_group_definition = try(var.networking.network_security_group_definition, var.network_security_group_definition)
     public_ip_addresses               = try(var.networking.public_ip_addresses, var.public_ip_addresses)
     azurerm_routes                    = try(var.networking.azurerm_routes, var.azurerm_routes)
