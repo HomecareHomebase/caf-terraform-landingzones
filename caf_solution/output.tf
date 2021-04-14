@@ -14,3 +14,7 @@ output "tfstates" {
   value     = local.tfstates
   sensitive = true
 }
+
+output "debug_local_global_settings" {
+  value = local.global_settings
+}
