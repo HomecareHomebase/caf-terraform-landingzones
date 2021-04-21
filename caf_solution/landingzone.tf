@@ -27,7 +27,6 @@ module "solution" {
   networking                            = local.networking
   remote_objects                        = local.remote
   resource_groups                       = var.resource_groups
-  resource_group_datas                  = var.resource_group_datas
   role_mapping                          = var.role_mapping
   security                              = local.security
   shared_services                       = local.shared_services
@@ -51,5 +50,7 @@ module "solution" {
     diagnostic_log_analytics        = try(local.diagnostics.diagnostic_log_analytics, var.diagnostic_log_analytics)
     diagnostic_storage_accounts     = try(local.diagnostics.diagnostic_storage_accounts, var.diagnostic_storage_accounts)
   }
+
+  resource_group_datas                  = var.resource_group_datas
 
 }

@@ -5,3 +5,7 @@ variable "azure_container_registry_datas" {
 variable "resource_group_datas" {
   default     = {}
 }
+
+variable "vnet_datas" {
+  default = {}
+}

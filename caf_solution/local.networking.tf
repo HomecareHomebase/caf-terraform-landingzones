@@ -37,6 +37,8 @@ locals {
       virtual_wans                                            = var.virtual_wans
       vnet_peerings                                           = var.vnet_peerings
       vnets                                                   = var.vnets
+      
+      vnet_datas                                              = var.vnet_datas
     }
   )
 }
