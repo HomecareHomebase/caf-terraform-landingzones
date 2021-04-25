@@ -72,7 +72,28 @@ variable "enable" {
 variable "environment" {
   description = "Name of the CAF environment."
   type        = string
-  default     = "sandpit"
+
+  validation {
+    condition = contains([
+        "Local",
+        "Development",
+        "QA-Hotfix",
+        "Automation-Hotfix",
+        "QA-Odd",
+        "Automation-Odd",
+        "QA-Even",
+        "Automation-Even",
+        "Staging",
+        "Training",
+        "Pilot",
+        "Pilot-Hotfix",
+        "Pilot-Staging",
+        "Production",
+        "Non-Production",
+        "Pipeline"],
+      var.environment)
+    error_message = "Argument \"environment_name\" isn't a valid value. Valid values are \"Local\", \"Development\", \"QA-Hotfix\", \"Automation-Hotfix\", \"QA-Odd\", \"Automation-Odd\", \"QA-Even\", \"Automation-Even\", \"Staging\", \"Training\", \"Pilot\", \"Pilot-Hotfix\", \"Pilot-Staging\", \"Production\", \"Non-Production\", or \"Pipeline\"."
+  }
 }
 
 variable "logged_user_objectId" {
