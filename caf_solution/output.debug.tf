@@ -1,7 +1,4 @@
-output "debug" {
-  value = tomap( {
-    "global_settings" = local.global_settings,
-    "caf" = module.solution.debug,
-  })
+output "debug_caf" {
+  value = module.solution.debug
   sensitive = true
 }
