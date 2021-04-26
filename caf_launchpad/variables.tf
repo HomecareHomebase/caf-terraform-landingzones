@@ -70,10 +70,6 @@ variable "tf_name" {
 
 variable "resource_groups" {}
 
-variable resource_group_datas {
-  default = {}
-}
-
 variable "storage_accounts" {}
 variable "keyvaults" {}
 variable "keyvault_access_policies" {
@@ -217,10 +213,6 @@ variable "bastion_hosts" {
 }
 
 variable "vnets" {
-  default = {}
-}
-
-variable vnet_datas {
   default = {}
 }
 
