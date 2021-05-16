@@ -1,5 +1,5 @@
 module "solution" {
-  source  = "git::https://github.com/HomecareHomebase/terraform-azurerm-caf?ref=feature/brown_field"
+  source  = "git::https://github.com/HomecareHomebase/terraform-azurerm-caf?ref=backup/merge/20210516"
 
   azuread_api_permissions               = var.azuread_api_permissions
   azuread_apps                          = var.azuread_apps

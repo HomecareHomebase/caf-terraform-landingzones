@@ -1,5 +1,5 @@
 module "caf" {
-  source  = "git::https://github.com/HomecareHomebase/terraform-azurerm-caf?ref=feature/brown_field"
+  source  = "git::https://github.com/HomecareHomebase/terraform-azurerm-caf?ref=backup/merge/20210516"
 
   current_landingzone_key     = var.landingzone.key
   tenant_id                   = var.tenant_id
