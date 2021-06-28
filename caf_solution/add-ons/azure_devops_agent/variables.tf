@@ -100,3 +100,6 @@ variable "dynamic_keyvault_secrets" {
 variable "managed_identities" {
   default = {}
 }
+variable "vnet_datas" {
+  default = {}
+}

@@ -155,6 +155,28 @@ variable "azuread_api_permissions" {
 variable "environment" {
   type        = string
   description = "This variable is set by the rover during the deployment based on the -env or -environment flags. Default to sandpit"
+
+  validation {
+    condition = contains([
+      "Local",
+      "Development",
+      "QA-Hotfix",
+      "Automation-Hotfix",
+      "QA-Odd",
+      "Automation-Odd",
+      "QA-Even",
+      "Automation-Even",
+      "Staging",
+      "Training",
+      "Pilot",
+      "Pilot-Hotfix",
+      "Pilot-Staging",
+      "Production",
+      "Non-Production",
+      "Pipeline"],
+    var.environment)
+    error_message = "Argument \"environment_name\" isn't a valid value. Valid values are \"Local\", \"Development\", \"QA-Hotfix\", \"Automation-Hotfix\", \"QA-Odd\", \"Automation-Odd\", \"QA-Even\", \"Automation-Even\", \"Staging\", \"Training\", \"Pilot\", \"Pilot-Hotfix\", \"Pilot-Staging\", \"Production\", \"Non-Production\", or \"Pipeline\"."
+  }
 }
 
 variable "diagnostics" {

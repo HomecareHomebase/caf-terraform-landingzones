@@ -1,6 +1,8 @@
 module "solution" {
-  source  = "aztfmod/caf/azurerm"
-  version = "~>5.3.2"
+  # source  = "aztfmod/caf/azurerm"
+  # version = "~>5.3.2"
+
+  source = "git::https://github.com/HomecareHomebase/terraform-azurerm-caf?ref=feature/brown_field"
 
   # source = "git::https://github.com/aztfmod/terraform-azurerm-caf.git?ref=master"
   # source = "../../aztfmod"

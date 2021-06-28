@@ -58,6 +58,10 @@ locals {
     regions            = var.regions
     tags               = var.tags
     use_slug           = var.use_slug
+
+    suffix             = local.suffix
+    suffixes           = local.suffix == "" ? null : try([local.suffix, random_string.suffix.0.result], [local.suffix])
+    suffix_with_hyphen = local.suffix == "" ? null : format("%s", try(random_string.suffix.0.result, local.suffix))
   }
 
   tfstates = tomap(
@@ -81,3 +85,36 @@ locals {
 }
 
 data "azurerm_client_config" "current" {}
+
+resource "random_string" "suffix" {
+  count   = var.suffix == null ? 1 : 0
+  length  = 4
+  special = false
+  upper   = false
+  number  = false
+}
+
+locals {
+  suffix = join("-", compact([var.suffix, local.environment_code]))
+
+  environment_codes = {
+    Local             = "locl",
+    Development       = "dev",
+    QA-Hotfix         = "qahf",
+    Automation-Hotfix = "auhf",
+    QA-Odd            = "qaod",
+    Automation-Odd    = "auod",
+    QA-Even           = "qaev",
+    Automation-Even   = "auev",
+    Staging           = "stg",
+    Training          = "trn",
+    Pilot             = "plt",
+    Pilot-Hotfix      = "plth",
+    Pilot-Staging     = "plts",
+    Production        = "prd",
+    Non-Production    = "nprd",
+    Pipeline          = "ppl"
+  }
+
+  environment_code = lookup(local.environment_codes, var.environment)
+}
