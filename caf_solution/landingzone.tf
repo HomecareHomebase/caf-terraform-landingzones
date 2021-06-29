@@ -1,11 +1,8 @@
 module "solution" {
-  # source  = "aztfmod/caf/azurerm"
-  # version = "~>5.3.2"
+  source  = "HomecareHomebase/caf/azurerm"
+  version = "~>100.0.0"
 
-  source = "git::https://github.com/HomecareHomebase/terraform-azurerm-caf?ref=feature/brown_field"
-
-  # source = "git::https://github.com/aztfmod/terraform-azurerm-caf.git?ref=master"
-  # source = "../../aztfmod"
+  # source = "git::https://github.com/HomecareHomebase/terraform-azurerm-caf?ref=feature/brown_field"
 
   # azuread                               = var.azuread
   azuread_api_permissions               = var.azuread_api_permissions

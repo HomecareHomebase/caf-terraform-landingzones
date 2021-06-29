@@ -1,10 +1,8 @@
 module "dynamic_keyvault_secrets" {
-  # source  = "aztfmod/caf/azurerm//modules/security/dynamic_keyvault_secrets"
-  # version = "~>5.3.2"
+  source  = "HomecareHomebase/caf/azurerm//modules/security/dynamic_keyvault_secrets"
+  version = "~>100.0.0"
 
-  source = "git::https://github.com/HomecareHomebase/terraform-azurerm-caf//modules/security/dynamic_keyvault_secrets?ref=feature/brown_field"
-
-  # source = "git::https://github.com/aztfmod/terraform-azurerm-caf.git//modules/security/dynamic_keyvault_secrets?ref=master"
+  # source = "git::https://github.com/HomecareHomebase/terraform-azurerm-caf//modules/security/dynamic_keyvault_secrets?ref=feature/brown_field"
 
   for_each = {
     for keyvault_key, secrets in try(var.dynamic_keyvault_secrets, {}) : keyvault_key => {

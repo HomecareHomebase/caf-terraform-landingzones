@@ -3,10 +3,10 @@
 #
 
 module "vm_extension_monitoring_agent" {
-  # source  = "aztfmod/caf/azurerm//modules/compute/virtual_machine_extensions"
-  # version = "~>5.3.2"
+  source  = "HomecareHomebase/caf/azurerm//modules/compute/virtual_machine_extensions"
+  version = "~>100.0.0"
   
-  source = "git::https://github.com/HomecareHomebase/terraform-azurerm-caf//modules/compute/virtual_machine_extensions?ref=feature/brown_field"
+  # source = "git::https://github.com/HomecareHomebase/terraform-azurerm-caf//modules/compute/virtual_machine_extensions?ref=feature/brown_field"
   
   depends_on = [module.solution]
   
@@ -25,10 +25,10 @@ module "vm_extension_monitoring_agent" {
 }
 
 module "vm_extension_diagnostics" {
-  # source  = "aztfmod/caf/azurerm//modules/compute/virtual_machine_extensions"
-  # version = "~>5.3.2"
+  source  = "HomecareHomebase/caf/azurerm//modules/compute/virtual_machine_extensions"
+  version = "~>100.0.0"
   
-  source = "git::https://github.com/HomecareHomebase/terraform-azurerm-caf//modules/compute/virtual_machine_extensions?ref=feature/brown_field"
+  # source = "git::https://github.com/HomecareHomebase/terraform-azurerm-caf//modules/compute/virtual_machine_extensions?ref=feature/brown_field"
 
   depends_on = [module.solution]
 
@@ -50,14 +50,10 @@ module "vm_extension_diagnostics" {
 }
 
 module "vm_extension_microsoft_azure_domainjoin" {
-  # source  = "aztfmod/caf/azurerm//modules/compute/virtual_machine_extensions"
-  # version = "~>5.3.7"
+  source  = "HomecareHomebase/caf/azurerm//modules/compute/virtual_machine_extensions"
+  version = "~>100.0.0"
 
-  source = "git::https://github.com/HomecareHomebase/terraform-azurerm-caf//modules/compute/virtual_machine_extensions?ref=feature/brown_field"
-
-  # source = "/tf/caf/aztfmod/modules/compute/virtual_machine_extensions"
-
-  # source = "git::https://github.com/aztfmod/terraform-azurerm-caf.git//modules/compute/virtual_machine_extensions?ref=master"
+  # source = "git::https://github.com/HomecareHomebase/terraform-azurerm-caf//modules/compute/virtual_machine_extensions?ref=feature/brown_field"
 
   depends_on = [module.solution] 
 
@@ -74,14 +70,10 @@ module "vm_extension_microsoft_azure_domainjoin" {
 }
 
 module "vm_extension_session_host_dscextension" {
-  # source  = "aztfmod/caf/azurerm//modules/compute/virtual_machine_extensions"
-  # version = "~>5.3.7"
+  source  = "HomecareHomebase/caf/azurerm//modules/compute/virtual_machine_extensions"
+  version = "~>100.0.0"
 
-  source = "git::https://github.com/HomecareHomebase/terraform-azurerm-caf//modules/compute/virtual_machine_extensions?ref=feature/brown_field"
-
-  # source = "/tf/caf/aztfmod/modules/compute/virtual_machine_extensions"
-
-  # source = "git::https://github.com/aztfmod/terraform-azurerm-caf.git//modules/compute/virtual_machine_extensions?ref=master"
+  # source = "git::https://github.com/HomecareHomebase/terraform-azurerm-caf//modules/compute/virtual_machine_extensions?ref=feature/brown_field"
 
   depends_on = [module.vm_extension_microsoft_azure_domainjoin] 
 
