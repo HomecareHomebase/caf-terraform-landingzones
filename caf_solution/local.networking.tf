@@ -40,6 +40,8 @@ locals {
       virtual_hubs                                            = var.virtual_hubs
       vnet_peerings                                           = var.vnet_peerings
       vnets                                                   = var.vnets
+
+      vnet_datas = var.vnet_datas
     }
   )
 }

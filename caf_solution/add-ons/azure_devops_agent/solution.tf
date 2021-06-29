@@ -1,6 +1,8 @@
 module "caf" {
-  source  = "aztfmod/caf/azurerm"
-  version = "~>5.3.0"
+  source  = "HomecareHomebase/caf/azurerm"
+  version = "~>100.0.0"
+
+  # source = "git::https://github.com/HomecareHomebase/terraform-azurerm-caf?ref=feature/brown_field"
 
   current_landingzone_key     = var.landingzone.key
   tenant_id                   = var.tenant_id
@@ -25,6 +27,9 @@ module "caf" {
   }
   storage = {
     storage_account_blobs = var.storage_account_blobs
+  }
+  networking = {
+    vnet_datas = var.vnet_datas
   }
 
   # Pass the remote objects you need to connect to.

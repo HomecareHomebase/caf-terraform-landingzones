@@ -1,8 +1,8 @@
 module "launchpad" {
-  source  = "aztfmod/caf/azurerm"
-  version = "~>5.3.2"
+  source  = "HomecareHomebase/caf/azurerm"
+  version = "~>100.0.0"
 
-  # source = "git::https://github.com/aztfmod/terraform-azurerm-caf.git?ref=master"
+  # source = "git::https://github.com/HomecareHomebase/terraform-azurerm-caf?ref=feature/brown_field"
 
   # azuread                               = var.azuread
   azuread_api_permissions               = var.azuread_api_permissions
@@ -49,6 +49,8 @@ module "launchpad" {
     public_ip_addresses               = try(var.networking.public_ip_addresses, var.public_ip_addresses)
     azurerm_routes                    = try(var.networking.azurerm_routes, var.azurerm_routes)
     route_tables                      = try(var.networking.route_tables, var.route_tables)
+
+    vnet_datas = try(var.networking.vnet_datas, var.vnet_datas)
   }
 
   security = {
