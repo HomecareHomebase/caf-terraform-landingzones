@@ -1,0 +1,55 @@
+trigger:
+  branches:
+    include:
+    - master
+    - release/v*
+  tags:
+    include:
+      - v*
+
+variables:
+- name: Home.Folder.User
+  value: vsts_azpcontainer
+- name: Rover.Image
+  value: aztfmod/rover:0.15.4-2105.2603
+
+resources:
+  containers:
+  - container: rover
+    image: $(Rover.Image)
+    options: --user 0:0 -e TF_PLUGIN_CACHE_DIR="/home/$(Home.Folder.User)/plugin-cache" -e TF_DATA_DIR="/home/$(Home.Folder.User)"
+
+pool:
+  vmImage: ubuntu-20.04
+
+stages:
+- stage: validate
+  jobs:
+  - job: validate
+    displayName: Validate
+    container: rover
+    strategy:
+      matrix:
+        launchpad:
+          module.path: $(Build.Repository.LocalPath)/caf_launchpad
+        solution:
+          module.path: $(Build.Repository.LocalPath)/caf_solution
+        solution_aadpodidentity:
+          module.path: $(Build.Repository.LocalPath)/caf_solution/add-ons/aad-pod-identity
+        solution_aksapplications:
+          module.path: $(Build.Repository.LocalPath)/caf_solution/add-ons/aks_applications
+        solution_akssecurebaseline:
+          module.path: $(Build.Repository.LocalPath)/caf_solution/add-ons/aks-secure-baseline
+        solution_azuredevops:
+          module.path: $(Build.Repository.LocalPath)/caf_solution/add-ons/azure_devops
+        solution_azuredevopsagent:
+          module.path: $(Build.Repository.LocalPath)/caf_solution/add-ons/azure_devops_agent
+        solution_cafeslz:
+          module.path: $(Build.Repository.LocalPath)/caf_solution/add-ons/caf_eslz
+        solution_helmcharts:
+          module.path: $(Build.Repository.LocalPath)/caf_solution/add-ons/helm-charts
+    steps:
+    - script: |
+        terraform -chdir=${MODULE_PATH} init
+        terraform -chdir=${MODULE_PATH} validate
+      displayName: Validate

@@ -1,7 +1,6 @@
-![landingzones](https://github.com/Azure/caf-terraform-landingzones/workflows/landingzones/badge.svg)
-[![Gitter](https://badges.gitter.im/aztfmod/community.svg)](https://gitter.im/aztfmod/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
-
 # Cloud Adoption Framework for Azure landing zones on Terraform
+
+> Fork of [Azure/caf-terraform-landingzones](https://github.com/Azure/caf-terraform-landingzones) with additional features and capabilities that have yet to be merged into [Azure/caf-terraform-landingzones](https://github.com/Azure/caf-terraform-landingzones).
 
 Microsoft [Cloud Adoption Framework for Azure](https://docs.microsoft.com/azure/cloud-adoption-framework/overview) provides you with guidance and best practices to adopt Azure.
 
@@ -75,3 +74,18 @@ provided by the bot. You will only need to do this once across all repos using o
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
 For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
 contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+
+## Upstream Merge
+
+Initially upstream merges will be handled manually until the upstream is a little more stable. 
+
+```sh
+git remote add upstream https://github.com/aztfmod/terraform-azurerm-caf
+git fetch --all
+git checkout master
+git pull upstream master
+```
+
+## Versioning Strategy
+
+Versioning of this module diverged with upstream with the tag `v100.0.0` to prevent upstream collisions and provide a clearer delineation. From `v100.0.0` the component will follow [Semantic Versioning 2.0](https://semver.org/).
